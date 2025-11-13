@@ -44,7 +44,3 @@ Medication Reminders: Users can schedule and manage daily medication intake, rec
 
 Health Journal: A secure logging feature for users to record symptoms, mood, diet, and notes for later review with a medical professional.
 
-
-
-Your Name / Team Name - [youremail@example.com]
-Project Link: [https://www.google.com/search?q=https://github.com/YourUsername/MedTech-Repo]
