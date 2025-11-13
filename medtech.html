@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tech | Wellness Powered by Intelligence</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Define Green Theme Variables */
+        :root {
+            --primary-green: #28a745; /* A bright, appealing green */
+            --dark-green: #1e7e34;
+            --light-green: #e6f7ee;
+            --secondary-text: #5c6773;
+            --hero-text-color: #ffffff; /* White text for hero section */
+        }
+
+        /* General Body Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa; 
+            color: #333; /* Default text color */
+        }
+
+        /* Navigation Bar Styling */
+        .navbar-brand {
+            color: var(--primary-green) !important;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+        .btn-green {
+            background-color: var(--primary-green);
+            border-color: var(--primary-green);
+            color: white;
+            transition: background-color 0.3s;
+            font-weight: 500;
+        }
+        .btn-green:hover {
+            background-color: var(--dark-green); 
+            border-color: var(--dark-green);
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            position: relative;
+            background-image: url("https://static.vecteezy.com/system/resources/previews/005/922/770/non_2x/abstract-health-medical-science-consist-doctor-digital-futuristic-virtual-hologram-treatment-medicine-and-icon-vector.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 500px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--hero-text-color);
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); 
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+        .hero-content h1 {
+            font-size: 3.8rem; 
+            font-weight: 700;
+            color: var(--primary-green); 
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7); 
+        }
+        .hero-content p.lead {
+            font-size: 1.5rem;
+            color: var(--hero-text-color); 
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        /* Feature Card Styling */
+        .feature-card {
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            min-height: 450px; 
+            display: flex; 
+            flex-direction: column; 
+            overflow: hidden; 
+            background-color: #fff;
+        }
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.15);
+            border-color: var(--primary-green);
+        }
+        .feature-img-top {
+            width: 100%;
+            height: 200px; 
+            object-fit: cover; 
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .feature-card .card-body {
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .card-text {
+            color: var(--secondary-text);
+            font-size: 1rem;
+            line-height: 1.6;
+            flex-grow: 1; 
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #343a40;
+            color: #e9ecef;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        /* --- Chatbot Specific Styles --- */
+        #chat-open-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.5rem;
+        }
+
+        #chat-container {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            max-width: 90vw; /* Responsive on mobile */
+            height: 500px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+            display: none;
+            flex-direction: column;
+            z-index: 999;
+            overflow: hidden;
+            border: 1px solid var(--primary-green);
+        }
+
+        #chat-header {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 15px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #chat-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f7f7f7;
+        }
+
+        .message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background-color: #d1e7dd; /* Light green */
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .ai-message {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        #chat-input-area {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        #chat-input {
+            flex-grow: 1;
+            border-radius: 5px 0 0 5px;
+            border: 1px solid #ccc;
+            padding: 8px;
+            resize: none;
+        }
+
+        #chat-send-btn {
+            border-radius: 0 5px 5px 0;
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+        }
+        .spinner-border {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: var(--primary-green);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">🌳 Health Tech</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="features.html">Features</a>
+                    </li>
+                </ul>
+                <a class="btn btn-green" href="#"><i class="fas fa-sign-in-alt"></i> Login</a> 
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container hero-content">
+            <h1 class="display-3 fw-bold">Wellness Powered by Intelligence.</h1>
+            <p class="lead">Harnessing advanced technology for predictive, personalized, and proactive healthcare.</p>
+            <button class="btn btn-green btn-lg mt-3" onclick="document.getElementById('chat-open-btn').click();">
+                <i class="fas fa-robot me-2"></i> Chat with AI Assistant
+            </button>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 text-dark fw-bold">✨ Our Core Features</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                
+                <div class="col">
+                    <div class="card feature-card">
+                        <img 
+                            src="https://i.pinimg.com/564x/2a/a6/d1/2aa6d1b6a60805c4ed8897976ff46d5b.jpg" 
+                            alt="Digital blood pressure monitor screen" 
+                            class="card-img-top feature-img-top"
+                        >
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-success fw-bold"><i class="fas fa-heartbeat"></i> Precision BP Monitoring</h5>
+                            <p class="card-text text-secondary">Advanced tracking and AI-driven analysis of your blood pressure trends for early intervention and continuous health management.</p>
+                            <a href="#" class="btn btn-outline-success mt-auto">View My Report</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card feature-card">
+                        <img 
+                            src="https://cdn-icons-png.flaticon.com/512/7686/7686512.png" 
+                            alt="Blood bank laboratory with organized blood bags" 
+                            class="card-img-top feature-img-top"
+                        >
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-danger fw-bold"><i class="fas fa-tint"></i> Real-Time Blood Bank Locator</h5>
+                            <p class="card-text text-secondary">Instantly find nearby donation centers and check critical stock levels, saving precious time for patients in need.</p>
+                            <a href="#" class="btn btn-outline-danger mt-auto">Find Nearest Bank</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card feature-card">
+                        <img 
+                            src="https://img.freepik.com/premium-vector/blood-sugar-diabetes-monitoring-vector-illustration-graphic-icon-symbol_683773-1618.jpg?w=360" 
+                            alt="Sleek modern continuous glucose monitor (CGM)" 
+                            class="card-img-top feature-img-top"
+                        >
+                        <div class="card-body text-center">
+                            <h5 class="card-title text-primary fw-bold"><i class="fas fa-cookie-bite"></i> Smart Diabetes Management</h5>
+                            <p class="card-text text-secondary">Seamlessly track glucose, log meals, and receive personalized dietary and lifestyle recommendations through continuous monitoring.</p>
+                            <a href="#" class="btn btn-outline-primary mt-auto">Start Tracking</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center mb-4 text-dark fw-bold">🌱 About Us</h2>
+            <p class="lead text-center text-secondary">
+                **Green Health Tech** is founded on the belief that technology should empower health. We create intuitive, reliable tools that integrate cutting-edge AI and data science to make **proactive and personalized healthcare accessible to everyone**, everywhere.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0"><i class="fas fa-vial"></i> &copy; 2025 Green Health Tech. Innovation for Life.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot UI -->
+    <button id="chat-open-btn" class="btn btn-green" onclick="toggleChat()">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <div id="chat-container">
+        <div id="chat-header">
+            <span class="fw-bold"><i class="fas fa-headset me-1"></i> Med Tech Assistant</span>
+            <button class="btn btn-sm btn-light py-0" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="chat-messages" class="d-flex flex-column">
+            <div class="ai-message message">Hello! I'm your Med Tech Assistant. Ask me anything about digital health, wellness tracking, or our services!</div>
+            <div id="loading-spinner" class="text-center my-2 d-none">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+        <div id="chat-input-area">
+            <input type="text" id="chat-input" class="form-control" placeholder="Ask a question..." onkeydown="if(event.key === 'Enter') sendMessage()">
+            <button id="chat-send-btn" class="btn btn-green" onclick="sendMessage()" disabled>
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+        // --- Firebase/Auth Setup (Mandatory) ---
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        let app;
+        let auth;
+        let db;
+        let isAuthReady = false;
+        let userId = null;
+
+        // Initialize Firebase
+        if (Object.keys(firebaseConfig).length > 0) {
+            try {
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+            } catch (e) {
+                console.error("Firebase initialization failed:", e);
+            }
+        }
+
+        // Handle Authentication
+        if (auth) {
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    userId = user.uid;
+                } else {
+                    if (initialAuthToken) {
+                        try {
+                            await signInWithCustomToken(auth, initialAuthToken);
+                        } catch (error) {
+                            console.error("Error signing in with custom token:", error);
+                            await signInAnonymously(auth);
+                        }
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                }
+                isAuthReady = true;
+                document.getElementById('chat-send-btn').disabled = false; // Enable chat after auth
+            });
+        }
+        // --- End of Firebase/Auth Setup ---
+
+        const chatContainer = document.getElementById('chat-container');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('chat-send-btn');
+        const spinner = document.getElementById('loading-spinner');
+        
+        let chatHistory = [];
+        const SYSTEM_INSTRUCTION = "You are a helpful and encouraging Med Tech Assistant. Your goal is to provide concise, factual, and informative answers about health technology, wellness tracking, digital health tools, and general health-related queries. Keep responses friendly, professional, and focused on digital solutions where applicable. Do not give direct medical advice.";
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=`;
+        const MAX_RETRIES = 5;
+
+        window.toggleChat = function() {
+            chatContainer.style.display = chatContainer.style.display === 'flex' ? 'none' : 'flex';
+            if (chatContainer.style.display === 'flex') {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+
+        function appendMessage(sender, text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender === 'user' ? 'user-message' : 'ai-message');
+            messageDiv.innerHTML = text; // Use innerHTML to allow for formatting
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        async function callGeminiAPI(prompt, systemInstruction, retryCount = 0) {
+            const userPart = { role: "user", parts: [{ text: prompt }] };
+            const history = [...chatHistory, userPart];
+
+            const payload = {
+                contents: history,
+                systemInstruction: {
+                    parts: [{ text: systemInstruction }]
+                },
+                // Enable Google Search grounding for factual, up-to-date responses
+                tools: [{ "google_search": {} }], 
+            };
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    if (response.status === 429 && retryCount < MAX_RETRIES) {
+                        const delay = Math.pow(2, retryCount) * 1000 + Math.random() * 1000;
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        return callGeminiAPI(prompt, systemInstruction, retryCount + 1);
+                    }
+                    throw new Error(`API call failed with status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                
+                const candidate = result.candidates?.[0];
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    return candidate.content.parts[0].text;
+                } else {
+                    console.error("API response content missing:", result);
+                    return "Sorry, I couldn't process that request right now. Please try again.";
+                }
+
+            } catch (error) {
+                console.error("Fetch error:", error);
+                return "An error occurred while connecting to the assistant.";
+            }
+        }
+
+        window.sendMessage = async function() {
+            const userPrompt = chatInput.value.trim();
+            if (!userPrompt) return;
+
+            // 1. Display user message
+            appendMessage('user', userPrompt);
+            chatInput.value = '';
+            sendBtn.disabled = true;
+            spinner.classList.remove('d-none');
+
+            // Add to chat history
+            chatHistory.push({ role: "user", parts: [{ text: userPrompt }] });
+
+            // 2. Call API
+            const aiResponseText = await callGeminiAPI(userPrompt, SYSTEM_INSTRUCTION);
+
+            // 3. Remove loading and enable input
+            spinner.classList.add('d-none');
+            sendBtn.disabled = false;
+            
+            // 4. Display AI message and update history
+            appendMessage('ai', aiResponseText);
+            
+            // Store the AI response in history for context
+            chatHistory.push({ role: "model", parts: [{ text: aiResponseText }] });
+            
+            // Limit history size (e.g., last 10 turns)
+            if (chatHistory.length > 10) {
+                chatHistory = chatHistory.slice(-10);
+            }
+        }
+
+        // Enable send button when there is text
+        chatInput.addEventListener('input', () => {
+             // Only enable if auth is ready AND input has text
+            sendBtn.disabled = !isAuthReady || chatInput.value.trim() === ''; 
+        });
+
+        // Initial setup for send button state
+        sendBtn.disabled = !isAuthReady; 
+    </script>
+</body>
+</html>

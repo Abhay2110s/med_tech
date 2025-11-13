@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrated Health Redirector Hub</title>
+    <!-- Load Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind to use Inter font and a clean color palette --><script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-blue': '#1e40af', // Deep Blue
+                        'secondary-green': '#10b981', // Emerald Green
+                        'danger-red': '#ef4444', // Red for alerts
+                        'card-bg': '#ffffff',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for better aesthetics and readability */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url('https://png.pngtree.com/background/20250102/original/pngtree-assorted-pharmaceutical-medicine-pills-tablets-and-capsules-over-blue-background-picture-image_15452869.jpg'); 
+            background-size: cover;
+            background-position: center;
+        }
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            display: flex; /* Use flexbox for image and content alignment */
+            flex-direction: column; /* Stack image and text vertically */
+            justify-content: space-between; /* Push button to the bottom */
+        }
+        .card:hover {
+            transform: translateY(-2px);
+        }
+        .redirect-button {
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        /* Style for the image within the card */
+        .card-image {
+            width: 100%;
+            height: 150px; /* Fixed height for consistency */
+            object-fit: cover; /* Cover the area, cropping if necessary */
+            border-radius: 0.75rem 0.75rem 0 0; /* Rounded top corners */
+            margin-bottom: 1rem; /* Space below the image */
+        }
+        .card-content {
+            padding: 0 1.5rem 1.5rem 1.5rem; /* Padding for text content */
+            flex-grow: 1; /* Allows content area to expand */
+        }
+        .card-footer {
+            padding: 0 1.5rem 1.5rem 1.5rem; /* Padding for the button */
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto">
+        <!-- Header --><header class="text-center mb-10">
+            <h1 class="text-4xl font-extrabold text-primary-blue mb-2" >Features</h1>
+            <p class="text-gray-600">Access your primary health services with one click.</p>
+        </header>
+
+        <!-- Emergency SOS Alert (Now with an image and a distinct visual) --><div id="sos-section" class="mb-10 p-6 bg-danger-red rounded-xl shadow-2xl text-white text-center">
+            <h2 class="text-2xl font-bold mb-3">Emergency SOS Alert</h2>
+            <img src="https://img.freepik.com/premium-vector/red-flasher-siren-with-text-sos-vector-icon-isolated-white-background-alert-flashing-lights-flat-style-siren-police-ambulance-light-simple-helpline-emergency-sos-sign_502274-361.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x150';" alt="Emergency Services" class="mx-auto w-32 h-32 object-cover rounded-full mb-4 border-4 border-white shadow-md">
+            <p class="mb-4">Use this link to quickly access your local emergency services contact page or pre-saved emergency info.</p>
+            <a href="" target="_blank" class="w-full sm:w-auto inline-block px-8 py-4 bg-white text-danger-red font-extrabold text-lg rounded-full hover:bg-gray-100 transition duration-150 transform hover:scale-105 redirect-button">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                ACCESS EMERGENCY INFO
+            </a>
+            <p class="mt-3 text-sm font-medium">Opens external search result in a new tab.</p>
+        </div>
+
+        <!-- Main Grid for other features --><main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- 1. Blood Pressure Monitor Redirector --><div class="card bg-card-bg rounded-xl">
+                <img src="https://i.pinimg.com/564x/2a/a6/d1/2aa6d1b6a60805c4ed8897976ff46d5b.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x150';" alt="Blood Pressure Monitor" class="card-image">
+                <div class="card-content">
+                    <h2 class="text-xl font-semibold text-primary-blue mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-secondary-green" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                        </svg>
+                        Blood Pressure Monitor
+                    </h2>
+                    <p class="text-sm text-gray-500 mb-4">Jump directly to your preferred online BP logging and history application.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="" target="_blank" class="redirect-button w-full py-3 bg-secondary-green text-white font-bold rounded-lg hover:bg-green-600 transition duration-150 text-center inline-block">Go to BP App</a>
+                </div>
+            </div>
+
+            <!-- 2. Medicine Prescription Redirector --><div class="card bg-card-bg rounded-xl">
+                <img src="https://cdn-icons-png.freepik.com/512/9098/9098442.png" onerror="this.onerror=null;this.src='https://placehold.co/400x150';" alt="Medicine Prescription" class="card-image">
+                <div class="card-content">
+                    <h2 class="text-xl font-semibold text-primary-blue mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-secondary-green" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3z" />
+                            <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v6a2 2 0 002 2l2.586.299A2 2 0 009 14.586V15h2v-.414a2 2 0 001.586-1.697l.299-2.586a2 2 0 002-2V6a2 2 0 00-2-2H4zm5 9a1 1 0 10-2 0v1a1 1 0 102 0v-1z" clip-rule="evenodd" />
+                        </svg>
+                        Medicine Prescription
+                    </h2>
+                    <p class="text-sm text-gray-500 mb-4">Manage prescriptions, set reminders, or submit refill requests to your pharmacy portal.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="" target="_blank" class="redirect-button w-full py-3 bg-secondary-green text-white font-bold rounded-lg hover:bg-green-600 transition duration-150 text-center inline-block">Manage Prescriptions</a>
+                </div>
+            </div>
+
+            <!-- 3. Diet & Fitness Recommendations Redirector --><div class="card bg-card-bg rounded-xl">
+                <img src="https://previews.123rf.com/images/sonulkaster/sonulkaster1711/sonulkaster171100122/90690890-fitness-food-and-sports-healthy-diet-nutrition-products-supplements-vector-icons-poster.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x150';" alt="Diet and Fitness" class="card-image">
+                <div class="card-content">
+                    <h2 class="text-xl font-semibold text-primary-blue mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-secondary-green" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M12.44 2.52a.75.75 0 00-1.42 0L8.76 5.86a.75.75 0 00-.75.75l.17.65a.75.75 0 00.72.67h2.1a.75.75 0 00.72-.67l.17-.65a.75.75 0 00-.75-.75l-2.26-3.34a.75.75 0 00-.19-.19V5.5a.75.75 0 001.5 0V3.34a.75.75 0 00-.28-.56zM6 14a1 1 0 100 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
+                            <path d="M4 6a2 2 0 012-2h8a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM6 8h8v4H6V8z" />
+                        </svg>
+                        Diet & Fitness Recommendations
+                    </h2>
+                    <p class="text-sm text-gray-500 mb-4">Find personalized workout plans, track macros, and get healthy eating ideas.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="" target="_blank" class="redirect-button w-full py-3 bg-primary-blue text-white font-bold rounded-lg hover:bg-blue-600 transition duration-150 text-center inline-block">Get Recommendations</a>
+                </div>
+            </div>
+
+            <!-- 5. Real-time Blood Bank Locator Redirector --><div class="card bg-card-bg rounded-xl">
+                <img src="https://cdn-icons-png.flaticon.com/512/7686/7686512.png" onerror="this.onerror=null;this.src='https://placehold.co/400x150';" alt="Blood Bank Locator" class="card-image">
+                <div class="card-content">
+                    <h2 class="text-xl font-semibold text-primary-blue mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-secondary-green" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM6.5 9a.5.5 0 01.5.5v2.793l3.146-3.147a.5.5 0 01.708 0l3.146 3.147V9.5a.5.5 0 011 0v4.793l-.854.854a.5.5 0 01-.708 0l-3.293-3.293-3.293 3.293a.5.5 0 01-.708 0L6 14.293V9.5a.5.5 0 01.5-.5z" clip-rule="evenodd" />
+                        </svg>
+                        Real-time Blood Bank Locator
+                    </h2>
+                    <p class="text-sm text-gray-500 mb-4">Instantly find nearby blood donation centers and check current urgent needs.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="" target="_blank" class="redirect-button w-full py-3 bg-primary-blue text-white font-bold rounded-lg hover:bg-blue-600 transition duration-150 text-center inline-block">Locate Blood Banks</a>
+                </div>
+            </div>
+            
+            <!-- 6. Smart Diabetes Management Redirector --><div class="card bg-card-bg rounded-xl md:col-span-2 lg:col-span-1">
+                <img src="https://img.freepik.com/premium-vector/blood-sugar-diabetes-monitoring-vector-illustration-graphic-icon-symbol_683773-1618.jpg?w=360" onerror="this.onerror=null;this.src='https://placehold.co/400x150';" alt="Diabetes Management" class="card-image">
+                <div class="card-content">
+                    <h2 class="text-xl font-semibold text-primary-blue mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-secondary-green" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-8a1 1 0 102 0V8a1 1 0 10-2 0v2zm4-3a1 1 0 10-2 0V5a1 1 0 102 0v2z" clip-rule="evenodd" />
+                        </svg>
+                        Smart Diabetes Management
+                    </h2>
+                    <p class="text-sm text-gray-500 mb-4">Log your glucose, monitor trends, and access insulin dosage assistance tools.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="" target="_blank" class="redirect-button w-full py-3 bg-primary-blue text-white font-bold rounded-lg hover:bg-blue-600 transition duration-150 text-center inline-block">Go to Diabetes Manager</a>
+                </div>
+            </div>
+            
+            <!-- 7. FIRST AID ASSISTANT REDIRECTOR (NEW) --><div class="card bg-card-bg rounded-xl">
+                <img src="https://static.vecteezy.com/system/resources/previews/023/130/672/non_2x/the-first-aid-kit-icon-typically-represents-a-collection-of-supplies-and-equipment-used-to-provide-medical-assistance-in-emergency-situations-vector.jpg" onerror="this.onerror=null;this.src='https://placehold.co/400x150';" alt="First Aid Guide" class="card-image">
+                <div class="card-content">
+                    <h2 class="text-xl font-semibold text-primary-blue mb-3 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-secondary-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        First Aid Assistant
+                    </h2>
+                    <p class="text-sm text-gray-500 mb-4">Quickly access verified instructions for common injuries, burns, or medical emergencies.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="" target="_blank" class="redirect-button w-full py-3 bg-secondary-green text-white font-bold rounded-lg hover:bg-green-600 transition duration-150 text-center inline-block">Get First Aid Help</a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
